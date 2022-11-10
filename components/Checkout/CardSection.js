@@ -1,0 +1,38 @@
+import { CardElement } from "@stripe/react-stripe-js"
+
+const CardSection = ({submitOrder, errorMessage, successMessage}) => {
+  return (
+    <div>
+      <div>
+        <lebel htmlFor="card-element">クレジット/デビットカード</lebel>
+        <div>
+          <fieldset>
+            <div className="form-row">
+              <div id="card-element" style={{width: "100%"}}>
+                <CardElement />
+              </div>
+              <br />
+              <div className="order-button-wrapper">
+                <button onClick={() => submitOrder()}>注文を確認</button>
+              </div>
+              {errorMessage ? <div>{errorMessage}</div> : null}
+              {successMessage ? <div>{successMessage}</div> : null}
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <style jsx>
+        {`
+          .order-button-wrapper {
+            display: flex;
+            width: 100%;
+            align-items: flex-end;
+            justify-content: flex-end;
+          }
+        `}
+      </style>
+    </div>
+  );
+}
+
+export default CardSection;
